@@ -8,6 +8,9 @@ function GenerateImageForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Log the access token to the console
+    console.log(localStorage.getItem('access_token'));
+    const access_token = localStorage.getItem("access_token")
 
     // Make an API call to generate the image based on the prompt
     try {
@@ -16,7 +19,7 @@ function GenerateImageForm() {
       }, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          Authorization: `Bearer ${access_token}`,
         },
       });
 
@@ -33,16 +36,27 @@ function GenerateImageForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Enter prompt" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
-        <button type="submit">Generate Image</button>
+    <div style={{ maxWidth: '500px', margin: '0 auto' }}>
+      <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
+        <input
+          type="text"
+          placeholder="Enter prompt"
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          style={{ width: '70%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+        />
+        <button
+          type="submit"
+          style={{ padding: '10px 20px', borderRadius: '5px', border: 'none', background: '#007bff', color: '#fff', cursor: 'pointer' }}
+        >
+          Generate Image
+        </button>
       </form>
-      {error && <p>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {imageBase64 && (
         <div>
-          <h2>Generated Image</h2>
-          <img src={`data:image/jpeg;base64,${imageBase64}`} alt="" />
+          <h2 style={{ marginBottom: '10px' }}>Generated Image</h2>
+          <img src={`data:image/jpeg;base64,${imageBase64}`} alt="Generated" style={{ maxWidth: '100%' }} />
         </div>
       )}
     </div>

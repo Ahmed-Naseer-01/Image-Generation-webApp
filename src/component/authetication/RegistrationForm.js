@@ -9,7 +9,7 @@ function RegistrationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('/api/user/register/', {
+    const response = await fetch('http://127.0.0.1:8000/api/user/signup/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,13 +32,53 @@ function RegistrationForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <input type="password" placeholder="Confirm Password" value={password2} onChange={(e) => setPassword2(e.target.value)} />
-      <button type="submit">Register</button>
-    </form>
+    <div style={{ maxWidth: '300px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Register</h2>
+      <form onSubmit={handleSubmit}>
+        <div style={{ marginBottom: '10px' }}>
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+          />
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+          />
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+          />
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={password2}
+            onChange={(e) => setPassword2(e.target.value)}
+            style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+          />
+        </div>
+        <button
+          type="submit"
+          style={{ width: '100%', padding: '10px', borderRadius: '5px', border: 'none', background: '#007bff', color: '#fff', cursor: 'pointer' }}
+        >
+          Register
+        </button>
+      </form>
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import RegistrationForm from './component/authetication/RegistrationForm';
 import LoginForm from './component/authetication/LoginForm';
+import LogoutForm from './component/authetication/LogoutForm';
 import Profile from './component/authetication/Profile';
 import ChangePasswordForm from './component/authetication/ChangePasswordForm';
 import SendPasswordResetEmailForm from './component/authetication/SendPasswordResetEmailForm';
@@ -17,7 +18,8 @@ function App() {
 
       <h1>User Login</h1>
       <LoginForm />
-
+      <h1>User Logout</h1>
+      <LogoutForm />
       <h1>User Profile</h1>
       <Profile />
 
