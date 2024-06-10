@@ -28,7 +28,7 @@ function GeneratedImageList() {
       {images.map(image => (
         <div key={image.id} style={{ width: 'calc(33.33% - 20px)', margin: '10px', textAlign: 'center' }}>
           <img src={`http://localhost:8000${image.image}`} alt={image.prompt} style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '5px' }} />
-          <p style={{ fontSize: '14px', color: '#555' }}>{image.prompt}</p>
+          {/* <p style={{ fontSize: '14px', color: '#555' }}>{image.prompt}</p> */}
         </div>
       ))}
     </div>
